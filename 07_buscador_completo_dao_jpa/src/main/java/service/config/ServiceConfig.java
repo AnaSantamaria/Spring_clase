@@ -12,7 +12,7 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @ComponentScan(basePackages = {"service","dao","utilidades"})
-@PropertySource("classpath:config/application.properties")
+@PropertySource("classpath:config/aplication.properties")
 @EnableTransactionManagement
 @Configuration
 public class ServiceConfig {

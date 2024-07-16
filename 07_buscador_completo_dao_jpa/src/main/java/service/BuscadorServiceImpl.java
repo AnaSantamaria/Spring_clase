@@ -2,8 +2,6 @@ package service;
 
 import java.util.List;
 
-
-
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +10,7 @@ import entities.Resultado;
 import model.ResultadoDto;
 import utilidades.Mapeador;
 
-@Service("BuscadorEstandar")
+@Service("buscadorEstandar")
 @Scope ("singleton")
 
 
