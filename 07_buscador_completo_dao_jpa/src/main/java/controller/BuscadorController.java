@@ -37,12 +37,18 @@ public class BuscadorController {
 		
 		return service.agregar(resultado)?"inicio":"error";
 }
-	@GetMapping(value="toBuscarResultados")
+	@GetMapping(value="buscarUno")
 	public String buscarResultado(@RequestParam("url") String url,HttpServletRequest request) {
 		ResultadoDto resultado=service.buscarPorUrl(url);
 		
 		request.setAttribute("resultado", resultado);
 		return "resultado";
+	}
+	
+	@PostMapping(value="eliminar")
+	public String eliminarResultado(@RequestParam("url") String url) {
+		service.eliminar(url);
+		return "inicio";
 	}
 	
 	
