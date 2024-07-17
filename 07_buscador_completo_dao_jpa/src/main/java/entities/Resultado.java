@@ -12,15 +12,15 @@ import jakarta.persistence.Table;
 public class Resultado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idResultado;
+	private int idresultados;
 	private String url;
 	private String tematica;
 	private String descripcion;
 	
 	
-	public Resultado(int idResultado, String url, String tematica, String descripcion) {
+	public Resultado(int idresultados, String url, String tematica, String descripcion) {
 		super();
-		this.idResultado = idResultado;
+		this.idresultados = idresultados;
 		this.url = url;
 		this.tematica = tematica;
 		this.descripcion = descripcion;
@@ -33,12 +33,12 @@ public class Resultado {
 
 
 	public int getIdResultado() {
-		return idResultado;
+		return idresultados;
 	}
 
 
-	public void setIdResultado(int idResultado) {
-		this.idResultado = idResultado;
+	public void setIdResultado(int idresultados) {
+		this.idresultados = idresultados;
 	}
 
 

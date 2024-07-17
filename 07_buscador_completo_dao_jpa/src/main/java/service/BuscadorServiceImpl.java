@@ -19,6 +19,8 @@ public class BuscadorServiceImpl implements BuscadorService {
 	BuscadorDao buscadorDao;
 	Mapeador mapeador;
 	
+	
+	
 	public BuscadorServiceImpl(BuscadorDao buscadorDao,Mapeador mapeador) {
 		this.buscadorDao = buscadorDao;
 		this.mapeador=mapeador;
