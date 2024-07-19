@@ -1,15 +1,35 @@
 package controller.config;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.spring6.SpringTemplateEngine;
+import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring6.view.ThymeleafViewResolver;
+import org.thymeleaf.templatemode.TemplateMode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.thymeleaf.spring6.SpringTemplateEngine;
 import org.thymeleaf.spring6.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring6.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.TemplateMode;
-
-public class MvcConfig {
+@ComponentScan(basePackages = {"controller"})
+@EnableWebMvc
+@Configuration
+public class MvcConfig implements WebMvcConfigurer{
 	@Autowired
 	private ApplicationContext applicationContext;
 	@Bean
@@ -38,12 +58,18 @@ public class MvcConfig {
 
 	@Override
 	public void addViewControllers(ViewControllerRegistry registry) {
-		registry.addViewController("/toBuscarResultados").setViewName("buscarResultados");
-		registry.addViewController("/toAlta").setViewName("alta");
-		registry.addViewController("/").setViewName("inicio");
-		registry.addViewController("/toEliminar").setViewName("eliminar");
-		registry.addViewController("/toBuscar").setViewName("buscar");
+		registry.addViewController("/toRegistro").setViewName("registro");
+		registry.addViewController("/toLogin").setViewName("login");
+		registry.addViewController("/").setViewName("login");
+		registry.addViewController("/toInicio").setViewName("inicio");
+		
 		WebMvcConfigurer.super.addViewControllers(registry);
 	}
-
+	@Override
+	public void addResourceHandlers(ResourceHandlerRegistry registry) {
+		registry.addResourceHandler("/*").addResourceLocations("/");
+		WebMvcConfigurer.super.addResourceHandlers(registry);
+	}
+	
+	
 }

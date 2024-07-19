@@ -14,24 +14,23 @@
 		Precio: <input type="text" id="precio"><br>
 		Páginas: <input type="text" id="paginas"><br>
 		Temática:<select id="tematica" >
-				<option th:each="t:${temas}" th:value="${t.idTema}"	th:text="${"
-					
+				<option th:each="t:${temas}" th:value="${t.idTema}" th:text="${t.nombreTema}"></option>					
 				</select>
 		<input type="button" value="Alta" id="alta">
 		<br><br>
-		<a href="FrontController?operation=doInicio">Volver</a>
+		<a href="toInicio">Volver</a>
 	</center>
 	<script type="text/javascript">
 		$("#alta").click(function(){
-			var url="FrontController";
-			var params={"operation":"doAltaLibro",
+			var url="altaLibro";
+			var params={
 					"isbn":$("#isbn").val(),
 					"titulo":$("#titulo").val(),
 					"autor":$("#autor").val(),
 					"precio":$("#precio").val(),
 					"paginas":$("#paginas").val(),
 					"idTema":$("#tematica").val()};
-			$.get(url,params,function(data){
+			$.post(url,params,function(data){
 				let mensaje;
 				if(data=="true"){
 					mensaje="Libro añadido!";

@@ -59,7 +59,7 @@ public class LibrosServiceImpl implements LibrosService  {
 
 	@Override
 	public TemaDto getTema(int idTema) {
-		Optional<Libro> opTema=temasDao.findById(idTema);
+		Optional<Tema> opTema=temasDao.findById(idTema);
 		return mapeador.temaEntityToDto(opTema.isPresent()?opTema.get():new Tema());
 		
 	}
