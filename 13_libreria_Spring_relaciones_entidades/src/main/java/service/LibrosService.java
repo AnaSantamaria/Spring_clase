@@ -2,6 +2,7 @@ package service;
 
 import java.util.List;
 
+import entities.Tema;
 import model.LibroDto;
 import model.TemaDto;
 
@@ -15,6 +16,8 @@ public interface LibrosService {
 	TemaDto getTema(int idTema);
 
 	boolean guardarLibro(LibroDto libro);
+	
+	Tema buscarTemaTituloLibro(String titulo);
 
 
 }

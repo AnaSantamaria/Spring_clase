@@ -1,5 +1,7 @@
 package model;
 
+import entities.Tema;
+
 public class LibroDto {
 	
 	private int isbn;
@@ -7,12 +9,10 @@ public class LibroDto {
 	private String autor;
 	private double precio;
 	private int paginas;
-	private TemaDto temaDto;// aquie tengo todos los parametros de tema empaquetados.
-	
+	private TemaDto temaDto;
 	public LibroDto() {
 		super();
 	}
-
 	public LibroDto(int isbn, String titulo, String autor, double precio, int paginas, TemaDto temaDto) {
 		super();
 		this.isbn = isbn;
@@ -22,54 +22,43 @@ public class LibroDto {
 		this.paginas = paginas;
 		this.temaDto = temaDto;
 	}
-
 	public int getIsbn() {
 		return isbn;
 	}
-
 	public void setIsbn(int isbn) {
 		this.isbn = isbn;
 	}
-
 	public String getTitulo() {
 		return titulo;
 	}
-
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-
 	public String getAutor() {
 		return autor;
 	}
-
 	public void setAutor(String autor) {
 		this.autor = autor;
 	}
-
 	public double getPrecio() {
 		return precio;
 	}
-
 	public void setPrecio(double precio) {
 		this.precio = precio;
 	}
-
 	public int getPaginas() {
 		return paginas;
 	}
-
 	public void setPaginas(int paginas) {
 		this.paginas = paginas;
 	}
-
 	public TemaDto getTemaDto() {
 		return temaDto;
 	}
-
 	public void setTemaDto(TemaDto temaDto) {
 		this.temaDto = temaDto;
 	}
+
 	
 	
 }

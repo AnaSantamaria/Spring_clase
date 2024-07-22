@@ -72,6 +72,13 @@ public class LibrosServiceImpl implements LibrosService  {
 		librosDao.save(mapeador.libroDtoToEntity(libro));
 		return true;
 	}
+
+	@Override
+	public Tema buscarTemaTituloLibro(String titulo) {
+		
+		
+		return mapeador.temaEntityToDto(temasDao.findByTituloLibro(titulo));
+	}
 	}
 
 

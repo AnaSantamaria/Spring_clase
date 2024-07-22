@@ -1,8 +1,15 @@
 package entities;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -11,33 +18,37 @@ import jakarta.persistence.Table;
 
 public class Tema {
 	@Id
-	public int idTema;
-	public String Tema;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int idTema;
+	private String tema;
+	@OneToMany(mappedBy = "tema")
+	private List<Libro> libros;
 	
-	public Tema() {
-		super();
-	}
-
 	public Tema(int idTema, String tema) {
 		super();
 		this.idTema = idTema;
-		Tema = tema;
+		this.tema = tema;
 	}
-
+	public Tema() {
+		super();
+	}
 	public int getIdTema() {
 		return idTema;
 	}
-
 	public void setIdTema(int idTema) {
 		this.idTema = idTema;
 	}
-
 	public String getTema() {
-		return Tema;
+		return tema;
 	}
-
 	public void setTema(String tema) {
-		Tema = tema;
+		this.tema = tema;
 	}
-
+	public List<Libro> getLibros() {
+		return libros;
+	}
+	public void setLibros(List<Libro> libros) {
+		this.libros = libros;
+	}
+	
 }

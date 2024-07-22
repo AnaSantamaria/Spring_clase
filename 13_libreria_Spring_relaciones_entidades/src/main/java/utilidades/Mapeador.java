@@ -8,9 +8,11 @@ import dao.TemasDao;
 import entities.Cliente;
 import entities.Libro;
 import entities.Tema;
+import entities.Venta;
 import model.ClienteDto;
 import model.LibroDto;
 import model.TemaDto;
+import model.VentaDto;
 
 @Component
 public class Mapeador {
@@ -27,7 +29,7 @@ public class Mapeador {
 		return new TemaDto(tema.getIdTema(),tema.getTema());
 	}
 	public  LibroDto libroEntityToDto(Libro libro) {
-		Optional<Tema> opTema=temasDao.findById(libro.getIdTema());
+		Optional<Tema> opTema=temasDao.findById(libro.getTema().getIdTema());
 		return new LibroDto(libro.getIsbn(),
 						libro.getTitulo(),
 						libro.getAutor(),
@@ -42,7 +44,7 @@ public class Mapeador {
 				libro.getAutor(),
 				libro.getPrecio(),
 				libro.getPaginas(),
-				libro.getTemaDto().getIdTema()
+				new Tema(libro.getTemaDto().getIdTema(),null)
 				);
 	}
 	
@@ -54,5 +56,14 @@ public class Mapeador {
 				cliente.getTelefono());
 	}
 	
+	public VentaDto ventaEntiyiDto (Venta venta) {
+		
+		return new VentaDto(venta.getIdVenta(),
+				venta.getCliente().getUsuario(),
+				venta.getLibro().getTitulo(),
+				venta.getFecha());
+		
+		
+	}
 
 }

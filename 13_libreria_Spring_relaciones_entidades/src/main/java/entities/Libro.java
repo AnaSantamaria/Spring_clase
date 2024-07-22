@@ -3,6 +3,8 @@ package entities;
 import org.springframework.data.annotation.Id;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,7 +16,9 @@ public class Libro {
 	public String autor;
 	public double precio;
 	public int paginas;
-	public int idTema;
+	@ManyToOne
+	@JoinColumn(name="idTema",referencedColumnName = "idTema")
+	private Tema tema;
 	
 	
 	public Libro() {
@@ -22,14 +26,14 @@ public class Libro {
 	}
 
 
-	public Libro(int isbn, String titulo, String autor, double precio, int paginas, int idTema) {
+	public Libro(int isbn, String titulo, String autor, double precio, int paginas, Tema tema) {
 		super();
 		this.isbn = isbn;
 		this.titulo = titulo;
 		this.autor = autor;
 		this.precio = precio;
 		this.paginas = paginas;
-		this.idTema = idTema;
+		this.tema = tema;
 	}
 
 
@@ -83,15 +87,17 @@ public class Libro {
 	}
 
 
-	public int getIdTema() {
-		return idTema;
+	public Tema getTema() {
+		return tema;
 	}
 
 
-	public void setIdTema(int idTema) {
-		this.idTema = idTema;
+	public void setTema(Tema tema) {
+		this.tema = tema;
 	}
 	
 	
-
 }
+
+
+	

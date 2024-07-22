@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<centre>
+<h2> Compras de <b th: text${session.usuario}"></b></h2>
+<table border="1">
+<tr><th>libro</th><th>Fecha</th></tr>
+<tr th:each="v:${compras}">
+	<td th:text="${v.tituloLibro}"></td>
+	<td th:text="${v.fecha}"></td>
+
+
+</table>
+<a href="toInicio">volver</a>
+<br>
+</centre>
+
+</body>
+</html>

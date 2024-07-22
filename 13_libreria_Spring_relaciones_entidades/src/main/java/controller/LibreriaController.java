@@ -1,6 +1,5 @@
 package controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -14,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import jakarta.servlet.http.HttpSession;
 import model.ClienteDto;
 import model.LibroDto;
+import model.TemaDto;
 import service.ClientesService;
 import service.LibrosService;
 
@@ -28,6 +27,8 @@ public class LibreriaController {
 ClientesService clientesService;
 
 LibrosService librosService;
+
+
 
 
 
@@ -109,6 +110,21 @@ public String temas(Model model) {
 public String preparaAlta(Model model) {
 	model.addAttribute("temas", librosService.getTemas());
 	return "alta";
+}
+@GetMapping(value="temaTitulo", produces=MediaType.APPLICATION_JSON_VALUE)
+public @ResponseBody TemaDto temaPorTitulo(String titulo) {  //@ResponseBody porque es una peticion ajax
+	
+	return librosService.buscarTemaTituloLibro(titulo);
+	
+	
+}
+@GetMapping(value="misCompras", produces = MediaType.APPLICATION_JSON_VALUE)
+public String  misCompras (Model model, @SessionAttribute("usuario") String usuario){
+	
+	model.addAttribute("compras", clientesService.ventasCliente(usuario));
+	return "compras";
+	
+	
 }
 //
 
