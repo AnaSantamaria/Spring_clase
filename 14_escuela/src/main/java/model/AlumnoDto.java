@@ -1,38 +1,27 @@
-package entities;
+package model;
 
-import java.util.Set;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
-@Entity
-@Table(name="alumnos")
-public class Alumno {
-	@Id
+public class AlumnoDto {
+	
 	private String usuario;
 	private String password;
 	private String nombre;
 	private String email;
 	private int edad;
-	@ManyToMany()
-	@JoinTable(name="matriculas",
-	joinColumns = @JoinColumn(name="usuario",referencedColumnName = "usuario"),
-	inverseJoinColumns = @JoinColumn(name="idCurso",referencedColumnName = "idCurso"))
-	private Set<Curso> cursos;
-	public Alumno() {
+	
+	
+	
+	public AlumnoDto() {
 		super();
 	}
-	public Alumno(String usuario, String password, String nombre, String email, int edad, Set<Curso> cursos) {
+	public AlumnoDto(String usuario, String password, String nombre, String email, int edad) {
 		super();
 		this.usuario = usuario;
 		this.password = password;
 		this.nombre = nombre;
 		this.email = email;
 		this.edad = edad;
-		this.cursos = cursos;
 	}
 	public String getUsuario() {
 		return usuario;
@@ -64,12 +53,7 @@ public class Alumno {
 	public void setEdad(int edad) {
 		this.edad = edad;
 	}
-	public Set<Curso> getCursos() {
-		return cursos;
-	}
-	public void setCursos(Set<Curso> cursos) {
-		this.cursos = cursos;
-	}
+	
 	
 	
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+<body>
+<b th:text="${session.usuario}"></b>
+	<center>
+		Seleccione Curso:
+		<select id="temaSel" >
+			<option value="0">-Todos-</option>
+			<option th:each="t:${cursos}" th:value="${t.idCurso}" th:text="${t.nombreCurso}"></option>					
+		</select>
+		<br><br>
+	
+		
+		
+	
+</body>

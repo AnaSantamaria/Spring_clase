@@ -10,6 +10,7 @@ public class LibroDto {
 	private double precio;
 	private int paginas;
 	private TemaDto temaDto;
+	
 	public LibroDto() {
 		super();
 	}
