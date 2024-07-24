@@ -41,5 +41,22 @@ public class FormacionServiceImpl implements FormacionService {
 				.map(a->mapeador.alumnoEntityToDto(a))
 				.toList();
 	}
+	@Override
+	public boolean altaCurso(CursoDto curso) {
+		
+		/*if(clientesDao.findByUsuario(cliente.getUsuario())==null) {//si no encuentra cliente con ese usuario, lo guarda
+			clientesDao.save(mapeador.clienteDtoToEntity(cliente));
+			return true;
+		}
+		return false;*/
+		
+		if(cursosDao.findByNombreAndFechaInicio(curso.getNombre(), curso.getFechaInicio())==null){
+			cursosDao.save(mapeador.cursoDtoToEntity(curso));
+			return true;
+			
+		}
+		return false;
 
-}
+	}
+	}
+	

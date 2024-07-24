@@ -9,5 +9,6 @@ public interface FormacionService {
 	
 	List<CursoDto> cursos();
 	List<AlumnoDto> buscarAlumnosMatriculados(int idCurso);
+	boolean altaCurso (CursoDto curso);
 
 }

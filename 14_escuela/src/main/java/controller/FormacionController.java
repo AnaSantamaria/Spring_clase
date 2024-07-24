@@ -6,10 +6,13 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.AlumnoDto;
+import model.CursoDto;
 import service.FormacionService;
 
 @Controller
@@ -21,7 +24,7 @@ public class FormacionController {
 			super();
 			this.formacionService = formacionService;
 		}
-		@GetMapping (value="/")// la barra nos indica que es la pagina inicial
+		@GetMapping (value="consulta")// la barra nos indica que es la pagina inicial
 	public String inicial (Model model) {
 		model.addAttribute("cursos",formacionService.cursos());
 		return "cursos";
@@ -32,5 +35,10 @@ public class FormacionController {
 			
 			return formacionService.buscarAlumnosMatriculados(idCurso);
 		} 
+		
+		@PostMapping(value="altaCurso",produces=MediaType.TEXT_PLAIN_VALUE)
+		public @ResponseBody String altaCurso(@ModelAttribute CursoDto curso){
+			return String.valueOf(formacionService.altaCurso(curso));
+		}
 }
 
