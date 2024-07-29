@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.AlumnoDto;
+import model.AlumnoMatriculadoDto;
 import model.CursoDto;
 import service.FormacionService;
 

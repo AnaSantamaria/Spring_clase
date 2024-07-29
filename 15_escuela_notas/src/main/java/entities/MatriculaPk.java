@@ -1,11 +1,12 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import jakarta.persistence.Embeddable;
 
 @Embeddable
-public class MatriculaPk {
+public class MatriculaPk implements Serializable{// es una condicion de las primary key compuestas, han de ser una clase Serializable
 	private String usuario ;
 	private int idCurso;
 	
