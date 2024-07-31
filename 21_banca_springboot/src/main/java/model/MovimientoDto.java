@@ -1,36 +1,22 @@
-package entities;
+package model;
 
 import java.time.LocalDate;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
-@Entity
-@Table(name = "movimientos")
-
-public class Movimientos {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MovimientoDto {
+	
 	private int idMovimiento;
 	private int idCuenta;
 	private LocalDate fecha;
 	private double cantidad;
 	private String operacion;
-	@ManyToOne
-	@JoinColumn(name = "idCuenta", referencedColumnName = "numeroCuenta" )
-	private Cuentas cuenta;
 	
 	
-	public Movimientos() {
+	public MovimientoDto() {
 		super();
 	}
 
 
-	public Movimientos(int idMovimiento, int idCuenta, LocalDate fecha, double cantidad, String operacion) {
+	public MovimientoDto(int idMovimiento, int idCuenta, LocalDate fecha, double cantidad, String operacion) {
 		super();
 		this.idMovimiento = idMovimiento;
 		this.idCuenta = idCuenta;
@@ -50,12 +36,12 @@ public class Movimientos {
 	}
 
 
-	public int getIdCuenta() {
+	public int getIdCuemta() {
 		return idCuenta;
 	}
 
 
-	public void setIdCuenta(int idCuenta) {
+	public void setIdCuemta(int idCuemta) {
 		this.idCuenta = idCuenta;
 	}
 

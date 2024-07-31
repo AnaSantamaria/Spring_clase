@@ -1,6 +1,5 @@
 package dao;
 
-import java.util.List;
 
 /*Funcionalidades aplicación banca:
 
@@ -15,14 +14,10 @@ de esa cuenta, posteriores a la fecha indicada
 que pertenezca dicha cuenta*/
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
 
-import entities.Clientes;
+import entities.Cuentas;
 
-public interface ClientesDao extends JpaRepository<Clientes, Integer> {
-	
-	@Query("select c from Clientes c join c.cuentas q where q.numeroCuenta=?1  ")
-	List<Clientes> findByNumeroDeCuenta(int numeroCuenta);
+public interface CuentasDao extends JpaRepository<Cuentas, Integer> {// en cuentasDao no hago nada ya que todo lo que afecta a las cuentas es metodos Save o Update que ya vienen implementados en Spring
 	
 	
 
