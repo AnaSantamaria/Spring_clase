@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 @Entity
-@Table(name="alumnos")
+@Table(name="cursos")
 public class Curso {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +26,14 @@ public class Curso {
 		super();
 	}
 
-	public Curso(int idCurso, String nombre, int duracion, LocalDate fechaInicio, double precio, Set<Alumno> alumnos) {
+	public Curso(int idCurso, String nombre, int duracion, LocalDate fechaInicio, double precio) {
 		super();
 		this.idCurso = idCurso;
 		this.nombre = nombre;
 		this.duracion = duracion;
 		this.fechaInicio = fechaInicio;
 		this.precio = precio;
-		this.alumnos = alumnos;
+		
 	}
 
 	public int getIdCurso() {
