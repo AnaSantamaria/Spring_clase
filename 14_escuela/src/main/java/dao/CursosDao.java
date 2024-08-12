@@ -8,13 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import entities.Curso;
 
 public interface CursosDao extends JpaRepository<Curso, Integer> {
-	@Query("select c from Curso c join c.alumnos a where a.usuario=?1 ")
-	List<Curso> findByUsuario(String nombre);
-	
-	
-	
+	@Query("select c from Curso c join c.alumnos a where a.usuario=?1")
+	List<Curso> findByUsuario(String usuario);
 	@Query("select c from Curso c where c not in (select c from Curso c join c.alumnos a where a.usuario=?1)")
 	List<Curso> findByNoMatriculado(String usuario);
-	
 
 }

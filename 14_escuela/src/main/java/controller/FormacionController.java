@@ -22,9 +22,9 @@ public class FormacionController {
 			this.formacionService = formacionService;
 		}
 		@GetMapping (value="/")// la barra nos indica que es la pagina inicial
-	public String inicial (Model model) {
-		model.addAttribute("cursos",formacionService.cursos());
-		return "cursos";
+		public String inicial(Model model) {
+			model.addAttribute("cursos", formacionService.cursos());
+			return "cursos";
 	}
 		
 		@GetMapping(value="buscarAlumnosPorCurso",produces=MediaType.APPLICATION_JSON_VALUE)
