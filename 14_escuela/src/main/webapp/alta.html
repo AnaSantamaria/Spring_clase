@@ -43,7 +43,7 @@
 	</div>
 	<script type="text/javascript">
 		$("#alta").click(function(){
-			
+				alert($("#fechaInicio").val());
 				var url="altaCurso";
 				var params={
 						"nombre":$("#nombre").val(),
@@ -58,7 +58,7 @@
 						document.location.href="toInicio";
 					
 			}else{
-				alert("Los campos de contraseña no coinciden!!!!");
+				alert("No puede coincidir un nombre de curso y fecha ya existentes!");
 			}
 			
 		});

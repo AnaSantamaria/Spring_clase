@@ -24,21 +24,18 @@ public class FormacionController {
 			super();
 			this.formacionService = formacionService;
 		}
-<<<<<<< HEAD
-		@GetMapping (value="/")// la barra nos indica que es la pagina inicial
-		public String inicial(Model model) {
-			model.addAttribute("cursos", formacionService.cursos());
-			return "cursos";
-=======
-		@GetMapping (value="consulta")// la barra nos indica que es la pagina inicial
-	public String inicial (Model model) {
+
+		
+
+		@GetMapping (value="consulta")
+	public String inicio (Model model) {
 		model.addAttribute("cursos",formacionService.cursos());
 		return "cursos";
->>>>>>> branch 'master' of https://github.com/AnaSantamaria/Spring_clase.git
+
 	}
 		
 		@GetMapping(value="buscarAlumnosPorCurso",produces=MediaType.APPLICATION_JSON_VALUE)
-		public @ResponseBody List<AlumnoMatriculadoDto> alumnosPorCurso(@RequestParam("idCurso")int idCurso){
+		public @ResponseBody List<AlumnoDto> alumnosPorCurso(@RequestParam("idCurso")int idCurso){
 			
 			return formacionService.buscarAlumnosMatriculados(idCurso);
 		} 

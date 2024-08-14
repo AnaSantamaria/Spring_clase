@@ -47,7 +47,7 @@ public class FormacionServiceImpl implements FormacionService {
 		}
 		return false;
 	}
-	@Override
+	/*@Override
 	public AlumnoDto alumnoPorUsuario(String usuario) {
 		return alumnosDao.findById(usuario)
 				.map(a->mapeador.alumnoEntityToDto(a))
@@ -95,6 +95,6 @@ public class FormacionServiceImpl implements FormacionService {
 		}
 		return false;
 		
-	}
+	}*/
 
 }
