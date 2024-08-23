@@ -36,12 +36,12 @@ public class MovimientoDto {
 	}
 
 
-	public int getIdCuemta() {
+	public int getIdCuenta() {
 		return idCuenta;
 	}
 
 
-	public void setIdCuemta(int idCuemta) {
+	public void setIdCuenta(int idCuenta) {
 		this.idCuenta = idCuenta;
 	}
 

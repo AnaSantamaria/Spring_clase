@@ -40,7 +40,7 @@ public class BancaServiceImpl implements BancaService {
 		return cuentasDao.existsById(numeroCuenta);
 	}
 
-	@Transactional
+	@Transactional(propagation= Propagation.)
 	@Override
 	public void ingreso(int numeroCuenta, double cantidad) {
 
@@ -55,7 +55,7 @@ public class BancaServiceImpl implements BancaService {
 
 	}
 
-	@Transactional(propagation =)//Required es por defecto
+	@Transactional(propagation = Propagation.REQUIRED)//Required es por defecto
 	@Override
 	public void extraccion(int numeroCuenta, double cantidad) {
 		

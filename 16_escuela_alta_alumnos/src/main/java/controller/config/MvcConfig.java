@@ -49,6 +49,7 @@ public class MvcConfig implements WebMvcConfigurer{
 		registry.addViewController("/toInicio").setViewName("inicio");
 		registry.addViewController("/toAlta").setViewName("alta");
 		
+		
 		WebMvcConfigurer.super.addViewControllers(registry);
 	}
 	@Override
