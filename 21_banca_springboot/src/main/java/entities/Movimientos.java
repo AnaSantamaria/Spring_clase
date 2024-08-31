@@ -1,6 +1,7 @@
 package entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,7 +18,7 @@ public class Movimientos {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMovimiento;
 	private int idCuenta;
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 	private double cantidad;
 	private String operacion;
 	@ManyToOne
@@ -30,7 +31,7 @@ public class Movimientos {
 	}
 
 
-	public Movimientos(int idMovimiento, int idCuenta, LocalDate fecha, double cantidad, String operacion) {
+	public Movimientos(int idMovimiento, int idCuenta, LocalDateTime fecha, double cantidad, String operacion) {
 		super();
 		this.idMovimiento = idMovimiento;
 		this.idCuenta = idCuenta;
@@ -39,6 +40,8 @@ public class Movimientos {
 		this.operacion = operacion;
 	}
 
+
+	
 
 	public int getIdMovimiento() {
 		return idMovimiento;
@@ -60,12 +63,12 @@ public class Movimientos {
 	}
 
 
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 

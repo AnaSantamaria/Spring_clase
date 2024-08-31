@@ -21,15 +21,16 @@ public class Mapeador {
 	public MovimientoDto movimientosEntityToDto(Movimientos movimiento) {
 		
 		return new MovimientoDto(movimiento.getIdMovimiento(),
-								movimiento.getIdCuenta(),
-								movimiento.getFecha(),
-								movimiento.getCantidad(),
-								movimiento.getOperacion());
+									movimiento.getIdCuenta(),
+									movimiento.getFecha(),
+									movimiento.getCantidad(),
+									movimiento.getOperacion()
+						);
 		
 		
 	}
 	
-	public CuentaDto cuentasEntityToiDto(Cuentas cuenta) {
+	public CuentaDto cuentasEntityToDto(Cuentas cuenta) {
 		
 		return new CuentaDto (cuenta.getNumeroCuenta(),
 								cuenta.getSaldo(),
@@ -37,5 +38,15 @@ public class Mapeador {
 		
 		
 	}
+	
+	
+	 public ClienteDto clienteEntityToDto(Clientes cliente) {
+	        return new ClienteDto(
+	                cliente.getDni(),
+	                cliente.getNombre(),
+	                cliente.getDireccion(),
+	                cliente.getTelefono()
+	        );
+	    }
 
 }

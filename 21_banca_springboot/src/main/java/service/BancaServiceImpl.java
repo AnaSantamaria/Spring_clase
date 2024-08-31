@@ -40,7 +40,7 @@ public class BancaServiceImpl implements BancaService {
 		return cuentasDao.existsById(numeroCuenta);
 	}
 
-	@Transactional(propagation= Propagation.)
+	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void ingreso(int numeroCuenta, double cantidad) {
 
@@ -55,42 +55,28 @@ public class BancaServiceImpl implements BancaService {
 
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)//Required es por defecto
+	@Transactional(propagation = Propagation.REQUIRED) // Required es por defecto
 	@Override
 	public void extraccion(int numeroCuenta, double cantidad) {
-		
-		Cuentas cuenta =cuentasDao.findById(numeroCuenta).orElse(null);
-		if(cuenta!=null) {
-			
-			cuenta.setSaldo(cuenta.getSaldo()-cantidad);
-			operacion(cantidad,"extraccion",cuenta);
-		}else {
+
+		Cuentas cuenta = cuentasDao.findById(numeroCuenta).orElse(null);
+		if (cuenta != null) {
+
+			cuenta.setSaldo(cuenta.getSaldo() - cantidad);
+			operacion(cantidad, "extraccion", cuenta);
+		} else {
 			throw new RuntimeException();
 		}
-
-		public void operacion(double cantidad,String operacion,Cuentas cuenta) {
-			
-			movimientosDao.save(new Movimientos(0,LocalDateTime.now(), 
-							cantidad,
-							operacion,
-							cuenta
-							));
-				
-			cuentasDao.save(cuenta);
-		} 
-			
-
-							
-							
-						
-							
-				
-		 
-		
-
 	}
 
-	@Transactional
+	public void operacion(double cantidad, String operacion, Cuentas cuenta) {
+
+		movimientosDao.save(new Movimientos(0,0, LocalDateTime.now(), cantidad, operacion));
+
+		cuentasDao.save(cuenta);
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
 	@Override
 	public void transferencia(int numeroCuentaOrigen, int numeroCuentaDestino, double cantidad) {
 
@@ -100,28 +86,27 @@ public class BancaServiceImpl implements BancaService {
 	}
 
 	@Override
-	public List<ClienteDto> titularesCuenta (int numeroCuenta) {
-		if (validarCuenta (numeroCuenta)) {
-			
-			return clientesDao.findByNumeroDeCuenta(numeroCuenta).stream()
-					.map(c->mapeador.clienteEntityToDto(c))
+	public List<ClienteDto> titularesCuenta(int numeroCuenta) {
+		if (validarCuenta(numeroCuenta)) {
+
+			return clientesDao.findByNumeroDeCuenta(numeroCuenta).stream().map(c -> mapeador.clienteEntityToDto(c))
 					.toList();
-		}else {
-			
+		} else {
+
 			throw new RuntimeException();
 		}
-			
-		}
-		
+
 	}
 
 	@Override
 	public List<MovimientoDto> movimientosCuentaFecha(int numeroCuenta, LocalDate fecha) {
-		return null;
-		
-		
+		if (validarCuenta(numeroCuenta)) {
 
-		
+			return movimientosDao.findByCuentaFecha(numeroCuenta, fecha).stream()
+					.map(m -> mapeador.movimientosEntityToDto(m)).toList();
+		}
+		return null;
+
 	}
 
 }
