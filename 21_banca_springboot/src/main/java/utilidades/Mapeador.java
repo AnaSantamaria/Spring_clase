@@ -22,7 +22,7 @@ public class Mapeador {
 		
 		return new MovimientoDto(movimiento.getIdMovimiento(),
 									movimiento.getIdCuenta(),
-									movimiento.getFecha(),
+									movimiento.getFecha().toLocalDate(),
 									movimiento.getCantidad(),
 									movimiento.getOperacion()
 						);

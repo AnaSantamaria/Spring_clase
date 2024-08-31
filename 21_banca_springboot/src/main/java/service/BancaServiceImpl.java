@@ -60,7 +60,7 @@ public class BancaServiceImpl implements BancaService {
 	public void extraccion(int numeroCuenta, double cantidad) {
 
 		Cuentas cuenta = cuentasDao.findById(numeroCuenta).orElse(null);
-		if (cuenta != null) {
+		if (cuenta.getSaldo()>= cantidad) {
 
 			cuenta.setSaldo(cuenta.getSaldo() - cantidad);
 			operacion(cantidad, "extraccion", cuenta);
@@ -70,8 +70,14 @@ public class BancaServiceImpl implements BancaService {
 	}
 
 	public void operacion(double cantidad, String operacion, Cuentas cuenta) {
-
-		movimientosDao.save(new Movimientos(0,0, LocalDateTime.now(), cantidad, operacion));
+		
+		Movimientos movimiento = new Movimientos();
+		
+	    movimiento.setFecha(LocalDateTime.now());
+	    movimiento.setCantidad(cantidad);;
+	    movimiento.setOperacion(operacion);
+	    movimiento.setIdCuenta(0);///Posible error al poner 0 como parametro
+		movimientosDao.save(movimiento);
 
 		cuentasDao.save(cuenta);
 	}
