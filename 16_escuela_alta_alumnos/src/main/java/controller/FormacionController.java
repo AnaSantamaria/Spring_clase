@@ -63,4 +63,10 @@ public class FormacionController {
 		return formacionService.cursosNoAlumno(usuario);
 	} 
 	
+	@GetMapping(value="paginaMatriculacionNuevo")
+	public String paginaMatriculacionNuevo(Model model) {
+	    model.addAttribute("cursos", formacionService.cursos());
+	    return "matriculacionNuevo";  // Nombre de la vista Thymeleaf para alumno nuevo
+	}
+
 }
