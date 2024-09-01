@@ -18,17 +18,16 @@ public class Mapeador {
 		
 	}*/
 	
-	public MovimientoDto movimientosEntityToDto(Movimientos movimiento) {
-		
+	public MovimientoDto movimientoEntityToDto(Movimientos movimiento) {
 		return new MovimientoDto(movimiento.getIdMovimiento(),
-									movimiento.getIdCuenta(),
-									movimiento.getFecha().toLocalDate(),
-									movimiento.getCantidad(),
-									movimiento.getOperacion()
-						);
+								movimiento.getCuenta().getNumeroCuenta(),
+								movimiento.getFecha(),
+								movimiento.getCantidad(),
+								movimiento.getOperacion());
+	} 
 		
 		
-	}
+	
 	
 	public CuentaDto cuentasEntityToDto(Cuentas cuenta) {
 		

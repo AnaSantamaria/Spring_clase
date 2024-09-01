@@ -17,7 +17,7 @@ public class Movimientos {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idMovimiento;
-	private int idCuenta;
+	
 	private LocalDateTime fecha;
 	private double cantidad;
 	private String operacion;
@@ -26,22 +26,24 @@ public class Movimientos {
 	private Cuentas cuenta;
 	
 	
+
+
+	
+
+	public Movimientos(int idMovimiento, LocalDateTime fecha, double cantidad, String operacion, Cuentas cuenta) {
+		super();
+		this.idMovimiento = idMovimiento;
+		this.fecha = fecha;
+		this.cantidad = cantidad;
+		this.operacion = operacion;
+		this.cuenta = cuenta;
+	}
+
+
 	public Movimientos() {
 		super();
 	}
 
-
-	public Movimientos(int idMovimiento, int idCuenta, LocalDateTime fecha, double cantidad, String operacion) {
-		super();
-		this.idMovimiento = idMovimiento;
-		this.idCuenta = idCuenta;
-		this.fecha = fecha;
-		this.cantidad = cantidad;
-		this.operacion = operacion;
-	}
-
-
-	
 
 	public int getIdMovimiento() {
 		return idMovimiento;
@@ -52,15 +54,6 @@ public class Movimientos {
 		this.idMovimiento = idMovimiento;
 	}
 
-
-	public int getIdCuenta() {
-		return idCuenta;
-	}
-
-
-	public void setIdCuenta(int idCuenta) {
-		this.idCuenta = idCuenta;
-	}
 
 
 	public LocalDateTime getFecha() {
@@ -91,6 +84,19 @@ public class Movimientos {
 	public void setOperacion(String operacion) {
 		this.operacion = operacion;
 	}
+
+
+	public Cuentas getCuenta() {
+		return cuenta;
+	}
+
+
+	public void setCuenta(Cuentas cuenta) {
+		this.cuenta = cuenta;
+	}
+
+
+	
 	
 	
 

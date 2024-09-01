@@ -1,6 +1,7 @@
 package controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
@@ -77,7 +78,7 @@ public class BancaController {
     public ResponseEntity<List<MovimientoDto>> movimientosCuentaFecha(@RequestParam int numeroCuenta,
                                                                       @RequestParam String fecha) {
         try {
-            LocalDate fechaParsed = LocalDate.parse(fecha); // Conversión de String a LocalDate
+            LocalDateTime fechaParsed = LocalDate.parse(fecha); // Conversión de String a LocalDate
             List<MovimientoDto> movimientos = bancaService.movimientosCuentaFecha(numeroCuenta, fechaParsed);
             return new ResponseEntity<>(movimientos, HttpStatus.OK);
         } catch (RuntimeException e) {

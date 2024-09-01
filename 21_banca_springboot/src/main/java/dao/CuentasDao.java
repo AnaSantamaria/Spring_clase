@@ -19,6 +19,6 @@ import entities.Cuentas;
 
 public interface CuentasDao extends JpaRepository<Cuentas, Integer> {// en cuentasDao no hago nada ya que todo lo que afecta a las cuentas es metodos Save o Update que ya vienen implementados en Spring
 	
-	
+	Cuentas findByNumeroCuenta(int numeroCuenta);
 
 }

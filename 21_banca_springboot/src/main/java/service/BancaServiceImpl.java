@@ -14,6 +14,7 @@ import dao.MovimientosDao;
 import entities.Cuentas;
 import entities.Movimientos;
 import model.ClienteDto;
+import model.CuentaDto;
 import model.MovimientoDto;
 import utilidades.Mapeador;
 
@@ -76,7 +77,7 @@ public class BancaServiceImpl implements BancaService {
 	    movimiento.setFecha(LocalDateTime.now());
 	    movimiento.setCantidad(cantidad);;
 	    movimiento.setOperacion(operacion);
-	    movimiento.setIdCuenta(0);///Posible error al poner 0 como parametro
+	    
 		movimientosDao.save(movimiento);
 
 		cuentasDao.save(cuenta);
@@ -105,14 +106,22 @@ public class BancaServiceImpl implements BancaService {
 	}
 
 	@Override
-	public List<MovimientoDto> movimientosCuentaFecha(int numeroCuenta, LocalDate fecha) {
+	public List<MovimientoDto> movimientosCuentaFecha(int numeroCuenta, LocalDateTime fecha) {
 		if (validarCuenta(numeroCuenta)) {
 
 			return movimientosDao.findByCuentaFecha(numeroCuenta, fecha).stream()
-					.map(m -> mapeador.movimientosEntityToDto(m)).toList();
+					.map(m -> mapeador.movimientoEntityToDto(m)).toList();
+		}else {
+			throw new RuntimeException();
 		}
-		return null;
+	
 
+	}
+
+	@Override
+	public CuentaDto getCuenta(int numeroCuenta) {
+		
+		return mapeador.cuentasEntityToDto(cuentasDao.findByNumeroCuenta(numeroCuenta));
 	}
 
 }

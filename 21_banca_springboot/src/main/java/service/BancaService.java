@@ -1,9 +1,11 @@
 package service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import model.ClienteDto;
+import model.CuentaDto;
 import model.MovimientoDto;
 
 public interface BancaService {
@@ -13,7 +15,7 @@ public interface BancaService {
 	void extraccion (int numeroCuenta, double cantidad);
 	void transferencia (int numeroCuentaOrigen, int numeroCuentaDestino, double cantidad);
 	List<ClienteDto> titularesCuenta(int numeroCuenta);
-	List<MovimientoDto> movimientosCuentaFecha(int numeroCuenta, LocalDate fecha);
-	
+	List<MovimientoDto> movimientosCuentaFecha(int numeroCuenta, LocalDateTime fecha);
+	CuentaDto getCuenta(int numeroCuenta);
 
 }

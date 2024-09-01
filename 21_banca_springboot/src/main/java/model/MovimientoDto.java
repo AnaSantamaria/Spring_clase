@@ -1,22 +1,25 @@
 package model;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class MovimientoDto {
 	
 	private int idMovimiento;
 	private int idCuenta;
-	private LocalDate fecha;
+	private LocalDateTime fecha;
 	private double cantidad;
 	private String operacion;
 	
 	
+	
+
 	public MovimientoDto() {
 		super();
 	}
 
 
-	public MovimientoDto(int idMovimiento, int idCuenta, LocalDate fecha, double cantidad, String operacion) {
+	public MovimientoDto(int idMovimiento, int idCuenta, LocalDateTime fecha, double cantidad, String operacion) {
 		super();
 		this.idMovimiento = idMovimiento;
 		this.idCuenta = idCuenta;
@@ -46,12 +49,12 @@ public class MovimientoDto {
 	}
 
 
-	public LocalDate getFecha() {
+	public LocalDateTime getFecha() {
 		return fecha;
 	}
 
 
-	public void setFecha(LocalDate fecha) {
+	public void setFecha(LocalDateTime fecha) {
 		this.fecha = fecha;
 	}
 
